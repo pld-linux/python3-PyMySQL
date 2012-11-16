@@ -1,8 +1,9 @@
 %define	snap	20120531
+%define	rel	2
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
 Version:	0.6
-Release:	0.%{snap}.1
+Release:	0.%{snap}.%{rel}
 License:	MIT
 Group:		Libraries/Python
 #Source0:	https://github.com/downloads/petehunt/PyMySQL/PyMySQL3-%{version}.tar.gz
