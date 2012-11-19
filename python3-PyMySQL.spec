@@ -27,7 +27,7 @@ work on CPython 2.3+, Jython, IronPython, PyPy and Python 3.
 %prep
 #%%setup  -q -n PyMySQL3-%{version}
 %setup -q -n petehunt-PyMySQL-bd9c588
-sed -i -e 's#2to3#2to3-3.2#g' build-py3k.sh
+sed -i -e 's#2to3#2to3-3.3#g' build-py3k.sh
 
 %build
 sh ./build-py3k.sh
