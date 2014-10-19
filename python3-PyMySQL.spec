@@ -1,5 +1,5 @@
 %define	snap	20121119
-%define	rel	1
+%define	rel	2
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
 Version:	0.6
