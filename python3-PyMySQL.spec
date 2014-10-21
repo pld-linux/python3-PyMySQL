@@ -1,20 +1,16 @@
-%define	snap	20121119
-%define	rel	2
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
-Version:	0.6
-Release:	0.%{snap}.%{rel}
+Version:	0.6.2
+Release:	1
 License:	MIT
 Group:		Libraries/Python
-#Source0:	https://github.com/downloads/petehunt/PyMySQL/PyMySQL3-%{version}.tar.gz
-Source0:	https://github.com/petehunt/PyMySQL/tarball/master/%{name}-%{version}.tar.gz
-# Source0-md5:	8bb32225d3590dd56ec586f4d125edbd
+Source0:	https://github.com/PyMySQL/PyMySQL/archive/pymysql-%{version}.tar.gz
+# Source0-md5:	d16b0b4b1fe5a5c397525da4bc8a3e46
 URL:		http://www.pymysql.org/
-BuildRequires:	python3-2to3
 BuildRequires:	python3-distribute
 BuildRequires:	python3-modules
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python3-modules
+Requires:	python3-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,26 +21,24 @@ The goal of pymysql is to be a drop-in replacement for MySQLdb and
 work on CPython 2.3+, Jython, IronPython, PyPy and Python 3.
 
 %prep
-#%%setup  -q -n PyMySQL3-%{version}
-%setup -q -n petehunt-PyMySQL-bd9c588
-sed -i -e 's#2to3#2to3-3.3#g' build-py3k.sh
+%setup  -q -n PyMySQL-pymysql-%{version}
 
 %build
-sh ./build-py3k.sh
-cd py3k
-PYTHONPATH=$(pwd)/pymysql %{__python3} setup.py build
+%{__python3} setup.py build --build-base build-3
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd py3k
-python3 -- setup.py install \
-	--root=$RPM_BUILD_ROOT \
-	--optimize=2
+
+%{__python3} setup.py \
+	build --build-base build-3 \
+	install --skip-build \
+	--optimize=2 \
+	--root=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{py3_sitescriptdir}/PyMySQL3-*.egg-info
+%{py3_sitescriptdir}/PyMySQL-%{version}-py*.egg-info
 %{py3_sitescriptdir}/pymysql
