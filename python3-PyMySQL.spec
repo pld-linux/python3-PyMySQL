@@ -1,7 +1,7 @@
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
 Version:	0.6.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 Source0:	https://github.com/PyMySQL/PyMySQL/archive/pymysql-%{version}.tar.gz
