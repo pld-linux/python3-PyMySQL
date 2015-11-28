@@ -24,16 +24,12 @@ work on CPython 2.3+, Jython, IronPython, PyPy and Python 3.
 %setup  -q -n PyMySQL-pymysql-%{version}
 
 %build
-%{__python3} setup.py build --build-base build-3
+%py3_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python3} setup.py \
-	build --build-base build-3 \
-	install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
