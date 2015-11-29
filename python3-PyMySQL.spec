@@ -7,6 +7,7 @@ Group:		Libraries/Python
 Source0:	https://github.com/PyMySQL/PyMySQL/archive/pymysql-%{version}.tar.gz
 # Source0-md5:	d16b0b4b1fe5a5c397525da4bc8a3e46
 URL:		http://www.pymysql.org/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python3-distribute
 BuildRequires:	python3-modules
 BuildRequires:	rpm-pythonprov
