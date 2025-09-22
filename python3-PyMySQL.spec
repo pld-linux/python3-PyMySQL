@@ -1,3 +1,4 @@
+%bcond_with	tests
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
 Version:	1.1.2
@@ -27,6 +28,13 @@ work on CPython 2.3+, Jython, IronPython, PyPy and Python 3.
 
 %build
 %py3_build_pyproject
+
+%if %{with tests}
+# use explicit plugins list for reliable builds (delete PYTEST_PLUGINS if empty)
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS= \
+%{__python3} -m pytest tests
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
