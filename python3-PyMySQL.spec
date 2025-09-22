@@ -1,16 +1,17 @@
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
-Version:	0.6.2
-Release:	4
+Version:	1.1.2
+Release:	1
 License:	MIT
 Group:		Libraries/Python
-Source0:	https://github.com/PyMySQL/PyMySQL/archive/pymysql-%{version}.tar.gz
-# Source0-md5:	d16b0b4b1fe5a5c397525da4bc8a3e46
-URL:		http://www.pymysql.org/
-BuildRequires:	rpmbuild(macros) >= 1.710
-BuildRequires:	python3-distribute
+Source0:	https://github.com/PyMySQL/PyMySQL/archive/refs/tags/v%{version}.tar.gz
+# Source0-md5:	4d08f0939106f2eb1d01ae5878e5e7f6
+URL:		https://github.com/PyMySQL/PyMySQL/
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
 BuildRequires:	python3-modules
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	python3-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -22,20 +23,21 @@ The goal of pymysql is to be a drop-in replacement for MySQLdb and
 work on CPython 2.3+, Jython, IronPython, PyPy and Python 3.
 
 %prep
-%setup  -q -n PyMySQL-pymysql-%{version}
+%setup  -q -n PyMySQL-%{version}
 
 %build
-%py3_build
+%py3_build_pyproject
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{py3_sitescriptdir}/PyMySQL-%{version}-py*.egg-info
+%doc CHANGELOG.md README.md SECURITY.md
+%{py3_sitescriptdir}/pymysql-%{version}.dist-info
 %{py3_sitescriptdir}/pymysql
