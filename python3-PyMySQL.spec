@@ -1,12 +1,12 @@
 %bcond_with	tests
 Summary:	Pure Python 3 MySQL Client
 Name:		python3-PyMySQL
-Version:	1.1.2
+Version:	1.2.4
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 Source0:	https://github.com/PyMySQL/PyMySQL/archive/refs/tags/v%{version}.tar.gz
-# Source0-md5:	4d08f0939106f2eb1d01ae5878e5e7f6
+# Source0-md5:	4d233f456183c4f6a574b812000272ca
 URL:		https://github.com/PyMySQL/PyMySQL/
 BuildRequires:	python3-build
 BuildRequires:	python3-installer
